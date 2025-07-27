@@ -1,0 +1,9 @@
+---
+- name: Ping all lab nodes
+  hosts: all_nodes
+  gather_facts: no
+
+  tasks:
+    - name: Check connectivity using Ansible ping module
+      ansible.builtin.ping:
+
