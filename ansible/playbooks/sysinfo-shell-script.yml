@@ -1,0 +1,8 @@
+---
+- name: Playbook for shell script
+  hosts: web
+
+  tasks:
+  - name: Run shell script
+    shell: "/opt/scripts/sys-info.sh"  
+
