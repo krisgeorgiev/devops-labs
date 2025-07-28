@@ -1,0 +1,15 @@
+---
+- name: Create 'devops' user on all nodes
+  hosts: all_nodes
+  become: yes
+
+  tasks:
+    - name: Ensure 'devops' user exists with sudo privileges
+      user:
+        name: devops
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        create_home: yes
+        state: present
+
