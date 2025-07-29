@@ -1,0 +1,15 @@
+---
+- name: Schedule a cron job on the app server
+  hosts: app
+
+  tasks:
+  - name: Schedule cron job remotelly
+    cron:
+      name: This job is scheduled by Ansible
+      minute: "0"
+      hour: "10"
+      day: "*"
+      month: "*"
+      weekday: "3"
+      user: kristian
+      job: "/home/kristian/crjobtest.sh"  
