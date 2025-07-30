@@ -1,0 +1,30 @@
+---
+- name: Uninstall Apache and install Nginx
+  hosts: web
+  become: true
+  tasks:
+    - name: Stop Apache service if running
+      service:
+        name: apache2
+        state: stopped
+      ignore_errors: true  # in case apache is not installed
+
+    - name: Uninstall Apache packages
+      apt:
+        name: apache2
+        state: absent
+        purge: yes
+      ignore_errors: true
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
