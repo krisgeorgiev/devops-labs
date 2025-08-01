@@ -1,0 +1,1 @@
+ansible 192.168.56.103 -m file -a path=/home/kristian/test-2 state=absent
