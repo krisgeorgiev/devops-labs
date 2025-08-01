@@ -1,0 +1,26 @@
+---
+- name: Install and Configure Docker on App Node
+  hosts: app
+  become: true
+
+  vars:
+    docker_users:
+      - kristian
+
+  pre_tasks:
+    - name: Ensure required packages are present
+      apt:
+        name: apt-transport-https
+        state: present
+        update_cache: yes
+
+  roles:
+    - geerlingguy.docker
+
+  post_tasks:
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
+
