@@ -1,0 +1,13 @@
+| Command                                            | Description                                                                        |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `docker pull <image>`                              | Downloads an image from Docker Hub (e.g. `docker pull crosty/python-app-1:latest`) |
+| `docker images`                                    | Lists all local Docker images                                                      |
+| `docker run --rm <image>`                          | Runs a container and deletes it after exit (clean run)                             |
+| `docker run -dit --name <name> <image> sleep 300`  | Runs a container in background for inspection                                      |
+| `docker exec -it <container> bash`                 | Opens an interactive shell into a running container                                |
+| `docker ps`                                        | Lists **running** containers                                                       |
+| `docker ps -a`                                     | Lists **all** containers, including stopped ones                                   |
+| `docker rmi <image>`                               | Deletes a Docker image from your system                                            |
+| `docker tag <local-image> <repo/image-name>:<tag>` | Tags an image before pushing (e.g. to Docker Hub)                                  |
+| `docker push <repo/image-name>:<tag>`              | Pushes a local image to Docker Hub                                                 |
+
