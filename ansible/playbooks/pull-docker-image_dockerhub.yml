@@ -1,0 +1,32 @@
+---
+- name: Deploy Python App to App Node
+  hosts: app
+  become: true
+
+  tasks:
+    - name: Pull latest Docker image
+      community.docker.docker_image:
+        name: crosty/python-app-1
+        tag: latest
+        source: pull
+
+    - name: Stop existing container if running
+      community.docker.docker_container:
+        name: python-app-1
+        state: stopped
+        force_kill: true
+      ignore_errors: true
+
+    - name: Remove old container
+      community.docker.docker_container:
+        name: python-app-1
+        state: absent
+      ignore_errors: true
+
+    - name: Run new container
+      community.docker.docker_container:
+        name: python-app-1
+        image: crosty/python-app-1:latest
+        state: started
+        restart_policy: always
+
